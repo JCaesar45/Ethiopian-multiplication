@@ -1,0 +1,145 @@
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ethiopian Multiplication - Ancient Algorithm, Modern Magic</title>
+</head>
+
+<body>
+  <canvas class="matrix-bg" id="matrixCanvas"></canvas>
+
+  <div class="container">
+    <header class="header">
+      <h1 class="title">Ethiopian Multiplication</h1>
+      <p class="subtitle">Ancient Algorithm • Modern Implementation</p>
+    </header>
+
+    <div class="main-content">
+      <div class="control-panel">
+        <h2>Input Parameters</h2>
+        <div class="input-group">
+          <label for="num1">First Number</label>
+          <input type="number" id="num1" value="17" min="1">
+        </div>
+        <div class="input-group">
+          <label for="num2">Second Number</label>
+          <input type="number" id="num2" value="34" min="1">
+        </div>
+        <button class="btn" id="calculateBtn">Calculate</button>
+
+        <div class="result-display" id="resultDisplay">
+          <div id="resultText">Result: 578</div>
+        </div>
+      </div>
+
+      <div class="visualization">
+        <h2>Calculation Steps</h2>
+        <div class="calculation-steps" id="stepsContainer">
+          <!-- Steps will be dynamically added here -->
+        </div>
+      </div>
+    </div>
+
+    <div class="algorithm-explanation">
+      <h2>Algorithm Implementation</h2>
+      <div class="tab-buttons">
+        <button class="tab-btn active" data-lang="javascript">JavaScript</button>
+        <button class="tab-btn" data-lang="python">Python</button>
+        <button class="tab-btn" data-lang="java">Java</button>
+      </div>
+
+      <div class="tab-content active" id="javascript-tab">
+        <div class="code-display">
+          function halve(n) {
+          return Math.floor(n / 2);
+          }
+
+          function double(n) {
+          return n * 2;
+          }
+
+          function isEven(n) {
+          return n % 2 === 0;
+          }
+
+          function eth_mult(a, b) {
+          let result = 0;
+          let left = a;
+          let right = b;
+
+          while (left >= 1) {
+          if (!isEven(left)) {
+          result += right;
+          }
+          left = halve(left);
+          right = double(right);
+          }
+
+          return result;
+          }
+        </div>
+      </div>
+
+      <div class="tab-content" id="python-tab">
+        <div class="code-display">
+          def halve(n):
+          return n // 2
+
+          def double(n):
+          return n * 2
+
+          def is_even(n):
+          return n % 2 == 0
+
+          def eth_mult(a, b):
+          result = 0
+          left = a
+          right = b
+
+          while left >= 1:
+          if not is_even(left):
+          result += right
+          left = halve(left)
+          right = double(right)
+
+          return result
+        </div>
+      </div>
+
+      <div class="tab-content" id="java-tab">
+        <div class="code-display">
+          public static int halve(int n) {
+          return n / 2;
+          }
+
+          public static int double(int n) {
+          return n * 2;
+          }
+
+          public static boolean isEven(int n) {
+          return n % 2 == 0;
+          }
+
+          public static int ethMult(int a, int b) {
+          int result = 0;
+          int left = a;
+          int right = b;
+
+          while (left >= 1) {
+          if (!isEven(left)) {
+          result += right;
+          }
+          left = halve(left);
+          right = double(right);
+          }
+
+          return result;
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
