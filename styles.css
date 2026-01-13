@@ -1,0 +1,440 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Share+Tech+Mono&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #00ff41;
+  --secondary: #0080ff;
+  --accent: #ff0080;
+  --dark: #0a0a0a;
+  --darker: #050505;
+  --glass: rgba(0, 255, 65, 0.1);
+}
+
+body {
+  font-family: "Share Tech Mono", monospace;
+  background: var(--darker);
+  color: var(--primary);
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 20% 50%,
+      rgba(0, 255, 65, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(0, 128, 255, 0.1) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 40% 20%,
+      rgba(255, 0, 128, 0.1) 0%,
+      transparent 50%
+    );
+  z-index: -1;
+  animation: pulse 6s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.matrix-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -2;
+  opacity: 0.1;
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.header {
+  text-align: center;
+  margin-bottom: 3rem;
+  position: relative;
+}
+
+.title {
+  font-family: "Orbitron", monospace;
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: linear-gradient(
+    45deg,
+    var(--primary),
+    var(--secondary),
+    var(--accent)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: glow 2s ease-in-out infinite alternate;
+  margin-bottom: 1rem;
+}
+
+@keyframes glow {
+  from {
+    filter: drop-shadow(0 0 20px var(--primary));
+  }
+  to {
+    filter: drop-shadow(0 0 40px var(--secondary));
+  }
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.main-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.control-panel {
+  background: var(--glass);
+  border: 1px solid var(--primary);
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 255, 65, 0.2);
+  animation: slideInLeft 1s ease-out;
+}
+
+.visualization {
+  background: var(--glass);
+  border: 1px solid var(--secondary);
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(0, 128, 255, 0.2);
+  animation: slideInRight 1s ease-out;
+}
+
+.input-group {
+  margin-bottom: 1.5rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+input[type="number"] {
+  width: 100%;
+  padding: 1rem;
+  font-size: 1.2rem;
+  font-family: "Share Tech Mono", monospace;
+  background: rgba(0, 0, 0, 0.5);
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  color: var(--primary);
+  transition: all 0.3s ease;
+}
+
+input[type="number"]:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 20px rgba(255, 0, 128, 0.5);
+  transform: scale(1.02);
+}
+
+.btn {
+  width: 100%;
+  padding: 1rem 2rem;
+  font-size: 1.2rem;
+  font-family: "Orbitron", monospace;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  background: linear-gradient(45deg, var(--primary), var(--secondary));
+  border: none;
+  border-radius: 10px;
+  color: var(--dark);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 255, 65, 0.4);
+}
+
+.btn:active {
+  transform: translateY(0);
+}
+
+.result-display {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid var(--accent);
+  border-radius: 15px;
+  text-align: center;
+  font-size: 1.5rem;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.5s ease;
+}
+
+.result-display.show {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.calculation-steps {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 15px;
+  margin-top: 1rem;
+}
+
+.step {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem;
+  margin-bottom: 0.5rem;
+  background: rgba(0, 255, 65, 0.1);
+  border-left: 3px solid var(--primary);
+  border-radius: 5px;
+  animation: slideIn 0.5s ease-out;
+  transition: all 0.3s ease;
+}
+
+.step:hover {
+  background: rgba(0, 255, 65, 0.2);
+  transform: translateX(5px);
+}
+
+.step.even {
+  opacity: 0.3;
+  text-decoration: line-through;
+}
+
+.step-number {
+  font-weight: bold;
+  color: var(--secondary);
+}
+
+.algorithm-explanation {
+  grid-column: 1 / -1;
+  background: var(--glass);
+  border: 1px solid var(--accent);
+  border-radius: 20px;
+  padding: 2rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 8px 32px rgba(255, 0, 128, 0.2);
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+.code-display {
+  background: rgba(0, 0, 0, 0.8);
+  border: 1px solid var(--primary);
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin-top: 1rem;
+  font-family: "Share Tech Mono", monospace;
+  font-size: 0.9rem;
+  overflow-x: auto;
+  position: relative;
+}
+
+.code-display::before {
+  content: "JAVASCRIPT";
+  position: absolute;
+  top: 0.5rem;
+  right: 1rem;
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-weight: bold;
+}
+
+.tab-buttons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.tab-btn {
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: 1px solid var(--primary);
+  border-radius: 5px;
+  color: var(--primary);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+  background: var(--primary);
+  color: var(--dark);
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.particle {
+  position: fixed;
+  pointer-events: none;
+  opacity: 0;
+  animation: particle-float 3s ease-out forwards;
+}
+
+@keyframes particle-float {
+  0% {
+    opacity: 1;
+    transform: translateY(0) scale(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-100px) scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    grid-template-columns: 1fr;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .container {
+    padding: 1rem;
+  }
+}
+
+.loading {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(0, 255, 65, 0.3);
+  border-radius: 50%;
+  border-top-color: var(--primary);
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
