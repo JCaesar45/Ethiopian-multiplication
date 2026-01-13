@@ -369,7 +369,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Jordan Leturgez** - jordanleturgez@gmail.com
 
-Project Link: [[https://github.com/yourusername/ethiopian-multiplication](https://github.com/yourusername/ethiopian-multiplication)](https://codepen.io/JCaesar45/full/QwEGQzw)
+Project Link: (https://codepen.io/JCaesar45/full/QwEGQzw)
 
 
 
